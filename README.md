@@ -1,61 +1,22 @@
-# ShopSphere AWS Foundation
+## Compute Infrastructure
 
-## Overview
+### Bastion Host
 
-This project demonstrates the design and implementation of a production-ready AWS foundation for a fictional e-commerce company called **ShopSphere**.
+A dedicated EC2 bastion host has been deployed in the public subnet for controlled administrative access.
 
-The goal is to build secure, scalable, and well-documented cloud infrastructure using AWS best practices.
+| Property | Value |
+|---|---|
+| Name | shopsphere-bastion-01 |
+| Role | Bastion Host |
+| Environment | Production |
+| Region | ap-south-1 |
+| Subnet | shopsphere-public-subnet-1a |
+| Security Group | shopsphere-bastion-sg |
+| OS | Ubuntu Server |
+| SSH | Restricted to administrator IP |
 
----
+### Security Approach
 
-## Business Scenario
+SSH access is restricted to the administrator's public IP address.
 
-ShopSphere is migrating its on-premises infrastructure to AWS.
-
-As a Junior DevOps Engineer, I was tasked with designing and deploying the core networking infrastructure that will later host:
-
-- Web servers
-- Application servers
-- Databases
-- Kubernetes clusters
-- CI/CD pipelines
-- Monitoring tools
-
----
-
-## Technologies
-
-- AWS
-- VPC
-- EC2
-- IAM
-- Security Groups
-- Route Tables
-- Internet Gateway
-- Linux
-- Terraform (coming soon)
-
----
-
-## Project Status
-
-🚧 In Progress
-
----
-
-## Repository Structure
-
-```text
-architecture/
-docs/
-images/
-notes/
-scripts/
-terraform/
-```
-
----
-
-## Author
-
-Ajay Bohat
+The bastion host is located in a public subnet while application and database workloads will remain in private subnets.
